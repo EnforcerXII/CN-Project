@@ -1,4 +1,4 @@
-FINAL COMPLETE CHAT SYSTEM
+##FINAL COMPLETE CHAT SYSTEM
 
 Steps:
 1. pip install cryptography
@@ -6,13 +6,13 @@ Steps:
 3. python async_server.py
 4. python client.py
 
-Commands:
+##Commands:
 /msg user message
 /file filename content
 /join room2
 /leave
 
-Features:
+##Features:
 - Multi-room chat
 - Private messaging
 - File transfer
