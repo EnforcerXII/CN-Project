@@ -1,10 +1,11 @@
 import socket
-import threading
 import ssl
+import threading
 import time
 
 HOST = "127.0.0.1"
 PORT = 5001
+
 
 def receive(sock):
     while True:
@@ -12,9 +13,13 @@ def receive(sock):
             msg = sock.recv(1024)
             if not msg:
                 break
-            print(msg.decode(), end="")
+            decoded = msg.decode()
+            if decoded.strip() == "/pong":  # hide heartbeat responses
+                continue
+            print(decoded, end="")
         except:
             break
+
 
 def heartbeat(sock):
     while True:
@@ -23,6 +28,7 @@ def heartbeat(sock):
             time.sleep(10)
         except:
             break
+
 
 def main():
     context = ssl.create_default_context()
@@ -47,6 +53,7 @@ def main():
     while True:
         msg = input()
         sock.sendall((msg + "\n").encode())
+
 
 if __name__ == "__main__":
     main()
