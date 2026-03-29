@@ -1,11 +1,13 @@
-from cryptography import x509
-from cryptography.x509.oid import NameOID
-from cryptography.hazmat.primitives import hashes, serialization
+from cryptography import x509 #create and manage certificates
+from cryptography.x509.oid import NameOID #provides predefined fields like country,state ,organization
+from cryptography.hazmat.primitives import hashes, serialization #hashes-used for signing certificate
+#serialization--used to save key/certificate to file
 from cryptography.hazmat.primitives.asymmetric import rsa
-import datetime
+#used to generate RSA public private key pair
+import datetime #certicate validity period
 
 key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
-
+#rsa key--encrypt nd sign certificate
 subject = issuer = x509.Name([
     x509.NameAttribute(NameOID.COUNTRY_NAME, "IN"),
     x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, "Karnataka"),
@@ -25,5 +27,5 @@ with open("key.pem", "wb") as f:
 
 with open("cert.pem", "wb") as f:
     f.write(cert.public_bytes(serialization.Encoding.PEM))
-
+#saves cert in PEM format
 print("Certificates generated!")

@@ -1,0 +1,18 @@
+async and thread both are used to handle multiple tasks
+async more efficient for i/o based applications like chat systems
+thread
+each client--seperate thread
+more clients--more thread
+consumes more memory
+too many thread-->slow system
+async
+Single thread
+uses event loop
+switches btw tasks when waiting
+handles many client efficiently
+thread
+100 clients-->100 threads
+async
+100 clients-->1 event loop
+async provides better scalability and lower overhead for 
+i/o bound tasks like messaging systems 
